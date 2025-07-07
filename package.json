@@ -1,21 +1,26 @@
 {
   "name": "playwright_bdd",
   "version": "1.0.0",
-  "description": "",
+  "description": "Playwright with Cucumber BDD framework",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js --require-module ts-node/register"
+    "test": "cucumber-js --require-module ts-node/register --require src/test/steps/**/*.ts --require src/hooks/**/*.ts src/test/features/**/*.feature --format html:playwright-report/index.html --format json:playwright-report/report.json"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "playwright",
+    "cucumber",
+    "typescript",
+    "bdd"
+  ],
+  "author": "Divraj M",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
     "@cucumber/cucumber": "^11.3.0",
     "@playwright/test": "^1.53.2",
-    "@types/node": "^24.0.10",
+    "@types/node": "^20.11.30",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "playwright": "^1.53.2"
