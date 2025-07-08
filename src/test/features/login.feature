@@ -1,4 +1,4 @@
-Feature: User Authentication tests
+Feature: user Authentication tests
 
 Background:
     Given user navigates to the application
@@ -15,4 +15,4 @@ Scenario: Login should not be success
     And user enter the password as ""
     When user click on the login button
     Then Login should fails
-    
+

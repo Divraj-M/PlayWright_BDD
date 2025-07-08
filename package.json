@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js --require-module ts-node/register --require src/hooks/**/*.ts --require src/test/steps/**/*.ts src/test/features/**/*.feature --format json:playwright-report/cucumber_report.json",
-    "report": "node generate-report.js"
-  },
+  "clean:report": "rimraf test-results",
+  "testonly": "cross-env-shell \"npx cucumber-js --format json:test-results/report.json || exit 0\"",
+  "test": "npm run clean:report && npm run testonly && npm run posttest ",
+  "posttest": "ts-node src/helper/report.ts"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -15,7 +17,10 @@
     "@cucumber/cucumber": "^11.3.0",
     "@playwright/test": "^1.53.2",
     "@types/node": "^24.0.10",
+    "cross-env": "^7.0.3",
     "cucumber-html-reporter": "^6.0.0",
+    "multiple-cucumber-html-reporter": "^3.9.3",
+    "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },

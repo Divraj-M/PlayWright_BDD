@@ -1,4 +1,4 @@
-Feature: User Authentication tests
+Feature: Add the book to the cart
 
 Background:
     Given user navigates to the application
