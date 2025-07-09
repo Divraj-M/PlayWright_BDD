@@ -2,37 +2,52 @@ import { Given, Then, When } from '@cucumber/cucumber';
 import { chromium, Page, Browser } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { pageFixture } from '../../hooks/pageFixture';
+import HeaderPage from '../../pages/headerPage';
+import LoginPage from '../../pages/loginPage';
+
 
 Given('user navigates to the application', async function () {
-  await pageFixture.page?.goto('https://bookcart.azurewebsites.net/');
+  const baseurl = process.env.BASE_URL;
+  if (!baseurl) {
+    throw new Error('BASE_URL is not defined in the environment variables');
+  }
+  await pageFixture.page?.goto(baseurl);
+  pageFixture.logger?.info(`Navigated to ${baseurl}`);
+});
+Given('user click on the login link', async function () {
+  const loginPage = new LoginPage(pageFixture.page!);
+  await loginPage.clickLoginLink();
+  pageFixture.logger?.info('Login link clicked');
 });
 
-Given('user click on the login link', async function () {
-           await pageFixture.page?.locator('//span[contains(text(),"Login")]').click();
-         });
-
 Given('user enter the username as {string}', async function (username) {
-
-            await pageFixture.page?.locator('//input[@placeholder="Username"]').fill(username);
+           const loginPage = new LoginPage(pageFixture.page!);
+            await loginPage.enterUsername(username);
+            pageFixture.logger?.info(`Username entered: ${username}`);
          });
 
 Given('user enter the password as {string}', async function (password) {
-           await pageFixture.page?.locator('//input[@placeholder="Password"]').fill(password);
+  const loginPage = new LoginPage(pageFixture.page!);
+            await loginPage.enterPassword(password);
+           pageFixture.logger?.info(`Password entered: ${password}`);
 
          });
 
 When('user click on the login button', async function () {
-            await pageFixture.page?.locator('//button[@class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base"]//span[2]').click();
+  const loginPage = new LoginPage(pageFixture.page!);
+            await loginPage.clickLoginButton();
+            pageFixture.logger?.info('Login button clicked');
          });
 
 
 Then('Login should be success', async function () {
-            const name = await pageFixture.page?.locator('//span[contains(text()," Swagger ")]//parent::a//preceding-sibling::mat-menu//preceding-sibling::a//child::span[2]//span').textContent();
-            await expect(name).toBe(" DivrajDiv1"); 
-                                     
-           
+  const loginPage = new LoginPage(pageFixture.page!);
+            await loginPage.verifyLoginSuccess(" DivrajDiv1");
+            pageFixture.logger?.info(`Login successful, user name displayed: DivrajDiv1`);
+
          });
 Then('Login should fails', async function () {
-          const errorMessage = await pageFixture.page?.locator('//mat-error[contains(text(),"Password is required")]').textContent();
-          await expect(errorMessage).toBe("Password is required");
+  const loginPage = new LoginPage(pageFixture.page!);
+          await loginPage.verifyLoginFailure("Password is required");
+          pageFixture.logger?.info(`Login failed, error message displayed: Password is required`);
        });
