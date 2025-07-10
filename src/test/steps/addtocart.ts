@@ -7,7 +7,7 @@ setDefaultTimeout(60 * 1000);
 
 Then('user search the book {string}', async function (book) {
    const addTocartpage = new Addtocartpage(pageFixture.page!);
-   await addTocartpage.searchBook(book);
+   await addTocartpage.searchBooks(book);
    pageFixture.logger?.info(`Searched for book: ${book}`);
 });
 

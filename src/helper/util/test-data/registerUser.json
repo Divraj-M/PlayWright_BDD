@@ -1,0 +1,37 @@
+[
+    {
+        "firstName": "Priya",
+        "lastName": "D",
+        "userName": "Priya07Smartcliff11",
+        "password": "Pass123$",
+        "confirmPassword": "Pass123$"
+    },
+    {
+        "firstName": "Rahul",
+        "lastName": "E",
+        "userName": "Rahul07Smartcliff11",
+        "password": "Pass123$",
+        "confirmPassword": "Pass123$"
+    },
+    {
+        "firstName": "Neha",
+        "lastName": "F",
+        "userName": "Neha07Smartcliff11",
+        "password": "Pass123$",
+        "confirmPassword": "Pass123$"
+    },
+    {
+        "firstName": "Karan",
+        "lastName": "G",
+        "userName": "Karan07Smartcliff11",
+        "password": "Pass123$",
+        "confirmPassword": "Pass123$"
+    },
+    {
+        "firstName": "Anjali",
+        "lastName": "H",
+        "userName": "Anjali07Smartcliff11",
+        "password": "Pass123$",
+        "confirmPassword": "Pass123$"
+    }
+]

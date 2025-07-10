@@ -15,7 +15,8 @@ export default class AddTocartpage {
         addtocart: '//span[contains(text()," Add to Cart")]',
         cartCount: '//*[@id="mat-badge-content-0"]'
     };
-    async searchBook(book: string) {
+
+    async searchBooks(book: string) {
         await this.page.locator(this.Elements.search).fill(book);
         await this.page.locator(this.Elements.bookOption).click();
         console.log(`Searched for book: ${book}`);

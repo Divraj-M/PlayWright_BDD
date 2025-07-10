@@ -3,7 +3,7 @@ module.exports = {
     formatOptions: {
       snippetInterface: "async-await"
     },
-    paths: ["src/test/features/**/*.feature"],
+    paths: ["src/test/features/*.feature"],
     requireModule: ["ts-node/register"],
     require: ["src/test/steps/**/*.ts", "src/hooks/**/*.ts"],
     dryRun: false,
@@ -14,7 +14,7 @@ module.exports = {
       "rerun:@rerun.txt"
     ],
     // publishQuiet: true,
-    // parallel: 2
+    parallel: 5
   },
 
   rerun: {
